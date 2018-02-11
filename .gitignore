@@ -1,4 +1,6 @@
 .DS_Store
 of/src/*
+!of/src/.gitkeep
 of/bin/*
+!of/bin/.gitkeep
 of/*.xcodeproj
