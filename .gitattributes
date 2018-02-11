@@ -1,6 +1,1 @@
-bin/* linguist-vendored
-*.make linguist-vendored
-*.xcodeproj linguist-vendored
-Makefile linguist-vendored
-*.plist linguist-vendored
-*.xcconfig linguist-vendored
+of/* linguist-vendored
