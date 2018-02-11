@@ -1,1 +1,4 @@
 .DS_Store
+of/src/*
+of/bin/*
+of/*.xcodeproj
