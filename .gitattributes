@@ -1,4 +1,4 @@
-bin linguist-vendored
+bin/* linguist-vendored
 *.make linguist-vendored
 *.xcodeproj linguist-vendored
 MakeFile linguist-vendored
