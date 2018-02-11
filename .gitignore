@@ -2,5 +2,5 @@
 of/src/*
 !of/src/.gitkeep
 of/bin/*
-!of/bin/data/.gitkeep
+!of/bin/.gitkeep
 of/*.xcodeproj
