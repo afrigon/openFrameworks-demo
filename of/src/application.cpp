@@ -6,7 +6,13 @@ void Application::setup() {
 }
 
 void Application::draw() {
-    this->renderer.draw();
+    this->renderer.draw(time_elapsed);
+}
+
+void Application::update() {
+    time_current = ofGetElapsedTimef();
+    time_elapsed = time_current - time_last;
+    time_last = time_current;
 }
 
 void Application::keyReleased(int key) {
