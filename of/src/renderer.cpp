@@ -6,51 +6,26 @@ void Renderer::setup() {
     ofSetFrameRate(60);
     ofSetWindowShape(this->windowSize, this->windowSize);
     
-    lsys = LSystem("F", 22);
-    lsys.addRule('F', "FF-[-F+F+F]+[+F-F-F]");
-    lsys.step(4);
-
-//    lsys = LSystem("F-G-G", 120);
-//    lsys.addRule('F', "F-G+F+G-F");
-//    lsys.addRule('G', "GG");
-//    lsys.step(6);
+    charlie.loadModel("charlie.obj");
     
     ofSetBackgroundAuto(true);
     ofBackground(0);
-    ofSetLineWidth(2);
+    ofEnableDepthTest();
+    ofEnableLighting();
+    
+    light.setAmbientColor(ofColor(0, 255, 0));
+    light.setDiffuseColor(ofColor(255, 255, 255));
+    light.setPosition(0.0f, 0.0f, 1000.0f);
+    light.enable();
 }
 
 void Renderer::draw(double delta) {
-    P pos = P(startPos.x, startPos.y);
-    double time = ofGetElapsedTimef();
-    int renderCount = min((double)lsys.str().size(), time * lsys.str().size() / renderTime);
-    for (int i = 0; i < renderCount; ++i) {
-        char& c = lsys.str()[i];
-        switch (c) {
-            case '+':
-                pos.heading += lsys.getAngle();
-                break;
-            case '-':
-                pos.heading -= lsys.getAngle();
-                break;
-            case '[':
-                posStack.push(pos);
-                break;
-            case ']':
-                pos = posStack.top();
-                posStack.pop();
-                break;
-            default:
-                double lastX = pos.x;
-                double lastY = pos.y;
-                
-                double rad = pos.heading * (pi/180);
-                pos.x += lineLength * cos(rad);
-                pos.y += lineLength * sin(rad);
-                
-                ofDrawLine(lastX, lastY, pos.x, pos.y);
-        }
-    }
+    ofFill();
+    ofSetLineWidth(1.0f);
+    ofSetColor(127);
+    ofTranslate(ofGetWidth()/ 2.0f, ofGetHeight() - 150, 20);
+    charlie.setRotation(0, 20.0f, 0.0f, 1.0f, 0.0f);
+    charlie.draw(OF_MESH_FILL);
 }
 
 void Renderer::image_export(const string name, const string extension) const {
