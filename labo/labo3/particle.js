@@ -62,9 +62,10 @@ class Particle {
     
     loop () {
         const now = Date.now()
-        this.update(now - this.lastUpdate)
+        console.log(now - this.lastUpdate)
+        //this.update(now - this.lastUpdate)
         this.lastUpdate = now
-        this.draw()
+        //this.draw()
         return requestAnimationFrame(this.loop.bind(this))
     }
 
